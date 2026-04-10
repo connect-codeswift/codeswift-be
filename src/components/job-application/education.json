@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_job_application_educations",
+  "info": {
+    "displayName": "education"
+  },
+  "options": {},
+  "attributes": {
+    "degree": {
+      "type": "string"
+    },
+    "institution": {
+      "type": "string"
+    },
+    "startYear": {
+      "type": "string"
+    },
+    "endYear": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

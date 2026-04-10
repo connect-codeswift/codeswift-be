@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_job_application_experiences",
+  "info": {
+    "displayName": "experience"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "string"
+    },
+    "endDate": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
