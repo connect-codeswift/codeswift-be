@@ -12,24 +12,48 @@
   "pluginOptions": {},
   "attributes": {
     "jobTitle": {
-      "type": "string"
-    },
-    "department": {
-      "type": "string"
-    },
-    "workType": {
-      "type": "string"
-    },
-    "workPlaceType": {
-      "type": "string"
-    },
-    "salaryRange": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "country": {
-      "type": "string"
+      "type": "enumeration",
+      "enum": [
+        "Pakistan",
+        "United States"
+      ]
     },
-    "location": {
+    "department": {
+      "type": "enumeration",
+      "enum": [
+        "Engineering",
+        "Design",
+        "Management",
+        "Marketing",
+        "Business",
+        "Human Resource",
+        "Finance",
+        "Leadership",
+        "Operation"
+      ]
+    },
+    "workType": {
+      "type": "enumeration",
+      "enum": [
+        "Full Time",
+        "Part Time",
+        "Contract",
+        "Internship"
+      ]
+    },
+    "workPlaceType": {
+      "type": "enumeration",
+      "enum": [
+        "On-Site",
+        "Remote",
+        "Hybrid"
+      ]
+    },
+    "salaryRange": {
       "type": "string"
     },
     "officeAddress": {
