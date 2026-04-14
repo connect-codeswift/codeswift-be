@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "job_openings",
+  "info": {
+    "singularName": "job-opening",
+    "pluralName": "job-openings",
+    "displayName": "job-opening"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "jobTitle": {
+      "type": "string"
+    },
+    "department": {
+      "type": "string"
+    },
+    "workType": {
+      "type": "string"
+    },
+    "workPlaceType": {
+      "type": "string"
+    },
+    "salaryRange": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "officeAddress": {
+      "type": "string"
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "longDescription": {
+      "type": "blocks"
+    }
+  }
+}

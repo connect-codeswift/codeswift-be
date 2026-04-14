@@ -539,6 +539,43 @@ export interface ApiJobApplicationJobApplication
   };
 }
 
+export interface ApiJobOpeningJobOpening extends Struct.CollectionTypeSchema {
+  collectionName: 'job_openings';
+  info: {
+    displayName: 'job-opening';
+    pluralName: 'job-openings';
+    singularName: 'job-opening';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    country: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    department: Schema.Attribute.String;
+    jobTitle: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::job-opening.job-opening'
+    > &
+      Schema.Attribute.Private;
+    location: Schema.Attribute.String;
+    longDescription: Schema.Attribute.Blocks;
+    officeAddress: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    salaryRange: Schema.Attribute.String;
+    shortDescription: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    workPlaceType: Schema.Attribute.String;
+    workType: Schema.Attribute.String;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1053,6 +1090,7 @@ declare module '@strapi/strapi' {
       'api::contact-us-form.contact-us-form': ApiContactUsFormContactUsForm;
       'api::get-in-touch-form.get-in-touch-form': ApiGetInTouchFormGetInTouchForm;
       'api::job-application.job-application': ApiJobApplicationJobApplication;
+      'api::job-opening.job-opening': ApiJobOpeningJobOpening;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
