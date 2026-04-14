@@ -430,6 +430,35 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBlogCategoryBlogCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'blog_categories';
+  info: {
+    displayName: 'blogCategory';
+    pluralName: 'blog-categories';
+    singularName: 'blog-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blogTitle: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blog-category.blog-category'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContactUsFormContactUsForm
   extends Struct.CollectionTypeSchema {
   collectionName: 'contact_us_forms';
@@ -550,19 +579,30 @@ export interface ApiJobOpeningJobOpening extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    country: Schema.Attribute.String;
+    country: Schema.Attribute.Enumeration<['Pakistan', 'United States']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    department: Schema.Attribute.String;
-    jobTitle: Schema.Attribute.String;
+    department: Schema.Attribute.Enumeration<
+      [
+        'Engineering',
+        'Design',
+        'Management',
+        'Marketing',
+        'Business',
+        'Human Resource',
+        'Finance',
+        'Leadership',
+        'Operation',
+      ]
+    >;
+    jobTitle: Schema.Attribute.String & Schema.Attribute.Unique;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::job-opening.job-opening'
     > &
       Schema.Attribute.Private;
-    location: Schema.Attribute.String;
     longDescription: Schema.Attribute.Blocks;
     officeAddress: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
@@ -571,8 +611,12 @@ export interface ApiJobOpeningJobOpening extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    workPlaceType: Schema.Attribute.String;
-    workType: Schema.Attribute.String;
+    workPlaceType: Schema.Attribute.Enumeration<
+      ['On-Site', 'Remote', 'Hybrid']
+    >;
+    workType: Schema.Attribute.Enumeration<
+      ['Full Time', 'Part Time', 'Contract', 'Internship']
+    >;
   };
 }
 
@@ -1087,6 +1131,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
       'api::contact-us-form.contact-us-form': ApiContactUsFormContactUsForm;
       'api::get-in-touch-form.get-in-touch-form': ApiGetInTouchFormGetInTouchForm;
       'api::job-application.job-application': ApiJobApplicationJobApplication;
